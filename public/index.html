@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1Commerce MCP Server — UnifyOne</title>
+
+<!-- ── Amplitude Analytics + Session Replay ────────────────── -->
+<script type="module">
+  import * as amplitude from "https://esm.sh/@amplitude/unified@latest";
+  if (!window.__AMPLITUDE_INITIALIZED__) {
+    amplitude.initAll("e8259c7abe5c05fba9ceae64030478c", {
+      analytics: { autocapture: true },
+      sessionReplay: { sampleRate: 1 }
+    });
+    window.__AMPLITUDE_INITIALIZED__ = true;
+  }
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
+    --text: #e4e4ef; --muted: #8888a0; --accent: #6366f1;
+    --glow: rgba(99,102,241,0.15); --green: #22c55e; --amber: #f59e0b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'SF Mono', 'Fira Code', monospace; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .container { max-width: 680px; width: 100%; padding: 2rem; }
+  .header { text-align: center; margin-bottom: 2.5rem; }
+  .logo { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; }
+  .logo span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+  .status-bar { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+  .card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--accent); }
+  .phase { display: grid; grid-template-columns: auto 1fr auto; gap: 0.25rem 0.75rem; font-size: 0.78rem; }
+  .phase .label { color: var(--muted); } .phase .name { color: var(--text); } .phase .count { color: var(--amber); text-align: right; }
+  pre { background: #0d0d14; border: 1px solid var(--border); border-radius: 6px; padding: 1rem; font-size: 0.75rem; overflow-x: auto; color: var(--muted); line-height: 1.6; }
+  pre strong { color: var(--text); font-weight: 600; }
+  pre .accent { color: var(--accent); }
+  .endpoint { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--glow); border: 1px solid var(--accent); border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.78rem; color: var(--accent); margin-top: 0.5rem; }
+  .footer { text-align: center; color: var(--muted); font-size: 0.7rem; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo"><span>1Commerce</span> MCP</div>
+    <div class="subtitle">Cathedral Framework — Multi-Tenant Commerce Intelligence</div>
+    <div class="status-bar"><div class="dot"></div> Server Online &nbsp;·&nbsp; 18 Tools &nbsp;·&nbsp; v1.0.0</div>
+  </div>
+
+  <div class="card">
+    <h3>⛪ Cathedral Phases</h3>
+    <div class="phase">
+      <span class="label">I Foundation</span><span class="name">Stores & Tenants</span><span class="count">4 tools</span>
+      <span class="label">II Walls</span><span class="name">Products, Inventory, Orders</span><span class="count">9 tools</span>
+      <span class="label">III Vaults</span><span class="name">Event-Driven Automations</span><span class="count">3 tools</span>
+      <span class="label">IV Spire</span><span class="name">Manus AI Intelligence</span><span class="count">4 tools</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Connect</h3>
+    <div class="endpoint">POST /mcp</div>
+    <div class="endpoint" style="margin-left: 0.5rem;">GET /health</div>
+    <pre style="margin-top: 1rem;">
+<strong>Claude Desktop / Claude Code</strong>
+{
+  "mcpServers": {
+    "onecommerce": {
+      "url": "<span class="accent">https://&lt;your-site&gt;.netlify.app/mcp</span>"
+    }
+  }
+}
+
+<strong>curl test</strong>
+curl -X POST <span class="accent">https://&lt;your-site&gt;.netlify.app/mcp</span> \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize",
+       "params":{"protocolVersion":"2025-03-26",
+       "capabilities":{},
+       "clientInfo":{"name":"test","version":"1.0.0"}}}'</pre>
+  </div>
+
+  <div class="footer">
+    PNW Enterprises · UnifyOne · Built for durability, not trends
+  </div>
+</div>
+</body>
+</html>

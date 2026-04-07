@@ -1,0 +1,25 @@
+[build]
+  functions = "netlify/functions"
+  publish = "public"
+  command = "npm install"
+
+[functions]
+  # Let Netlify auto-select bundler; esbuild struggles with MCP SDK dynamic imports
+  included_files = ["netlify/functions/**"]
+
+[[redirects]]
+  from = "/mcp"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Accept, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"

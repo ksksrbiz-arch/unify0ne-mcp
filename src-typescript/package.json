@@ -1,0 +1,26 @@
+{
+  "name": "onecommerce-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for the 1Commerce / UnifyOne multi-tenant commerce platform — stores, products, orders, Manus AI insights, and automation workflows.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "keywords": ["mcp", "commerce", "ai", "unify0ne", "1commerce"],
+  "author": "PNW Enterprises",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.2",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3"
+  }
+}
