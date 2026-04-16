@@ -2,15 +2,15 @@
 
 Production MCP (Model Context Protocol) server for the **1Commerce / UnifyOne** multi-tenant commerce platform. Deploys to Netlify as a serverless function at `/mcp`.
 
-**Cathedral Framework** — 18 tools across 4 phases:
+**UnifyOne Platform Integration** — 18 tools across 4 tiers:
 
-| Phase | Layer | Tools | Count |
-|-------|-------|-------|-------|
-| I — Foundation | Stores & Tenants | `oc_list_stores`, `oc_get_store`, `oc_create_store`, `oc_list_tenants` | 4 |
-| II — Walls | Products & Inventory | `oc_list_products`, `oc_get_product`, `oc_create_product`, `oc_update_inventory`, `oc_sync_inventory` | 5 |
-| II — Walls | Orders & Fulfillment | `oc_list_orders`, `oc_get_order`, `oc_fulfill_order`, `oc_cancel_order` | 4 |
-| III — Vaults | Automations | `oc_list_automations`, `oc_create_automation`, `oc_toggle_automation` | 3 |
-| IV — Spire | Manus AI | `oc_manus_insights`, `oc_manus_earnings_projection`, `oc_manus_route_intelligence`, `oc_manus_challenge_strategy` | 4 |
+| Tier | Category | Tools | Count |
+|------|----------|-------|-------|
+| I — Foundation | Stores & Tenants | `listStores`, `getTenantInfo` | 2 |
+| II — Walls | Products & Inventory | `listProducts`, `getProduct`, `searchProducts`, `getInventory`, `getLowStockProducts` | 5 |
+| II — Walls | Orders & Customers | `listOrders`, `getOrder`, `listCustomers`, `getCustomer` | 4 |
+| III — Vaults | Analytics & Data | `getAnalyticsSummary`, `getRevenueByDay`, `getTopProducts`, `getWebhookEvents`, `getNotifications`, `getCategories` | 6 |
+| IV — Spire | Platform Intelligence | `getPlatformStats` | 1 |
 
 ## Repo Layout
 
@@ -135,6 +135,8 @@ npm install
 npm run build
 node dist/index.js    # runs in stdio mode
 ```
+
+**Note:** The TypeScript source in `src-typescript/` uses the original `oc_*` tool naming convention and is provided for local development and testing. The production Netlify function (`netlify/functions/mcp.mjs`) has been updated with the platform-compatible tool names (`listStores`, `getProduct`, etc.) and is what the UnifyOne platform uses.
 
 ## Stress Test Results
 
