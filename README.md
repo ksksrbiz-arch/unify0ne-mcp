@@ -48,8 +48,8 @@ This MCP server is designed to integrate with the **UnifyOne Platform** (`unifyo
 In the UnifyOne platform's environment variables (Netlify dashboard or `.env`), set:
 
 ```bash
-# Point to this MCP server's deployment URL
-MCP_WORKER_URL=https://1commerce.online
+# Point to this MCP server's production deployment URL
+MCP_WORKER_URL=https://mcp-p.1commerce.online
 
 # OR for Netlify branch deploys:
 MCP_WORKER_URL=https://[your-site-name].netlify.app
@@ -88,7 +88,7 @@ This server exposes **18 tools** matching the platform's expected interface:
 Test the connection from the platform:
 
 ```bash
-curl https://1commerce.online/health
+curl https://mcp-p.1commerce.online/health
 ```
 
 Expected response:
@@ -110,7 +110,7 @@ Expected response:
 {
   "mcpServers": {
     "onecommerce": {
-      "url": "https://1commerce.online/mcp"
+      "url": "https://mcp-p.1commerce.online/mcp"
     }
   }
 }
@@ -119,7 +119,7 @@ Expected response:
 **curl test:**
 
 ```bash
-curl -X POST https://1commerce.online/mcp \
+curl -X POST https://mcp-p.1commerce.online/mcp \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"test","version":"1.0.0"}}}'
