@@ -122,7 +122,7 @@ For the platform (`unifyone-netlify-supabase`) to use this MCP server:
 
 1. Set environment variable in Netlify:
    ```bash
-   MCP_WORKER_URL=https://1commerce.online
+   MCP_WORKER_URL=https://mcp-p.1commerce.online
    MCP_API_KEY=<generated-key>
    ```
 
